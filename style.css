@@ -58,6 +58,7 @@ main {
     font-family: inherit;
     padding: 2rem;
     width: 400px;
+    overflow-wrap: break-word;
 }
 
 .escondido{
