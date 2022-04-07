@@ -15,19 +15,28 @@ body {
     min-height: 100vh;
 }
 
+form{
+    margin: 1rem;
+}
+
 input {
     background: black;
     border-radius: 10px;
     border: none;
     color:  #008F11;
     font-family: inherit;
-    font-size: 1rem;
     padding: 1rem;
     margin: 1rem;
+    font-size: 1rem;
 }
 
 input::placeholder {
     color: #003B00;
+}
+
+label{
+    color: #008F11;
+    font-size: 1rem;
 }
 
 h2 a{
@@ -49,4 +58,8 @@ main {
     font-family: inherit;
     padding: 2rem;
     width: 400px;
+}
+
+.escondido{
+    display: none;
 }
