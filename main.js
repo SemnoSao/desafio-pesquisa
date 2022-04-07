@@ -5,8 +5,11 @@ const main = document.getElementById("main");
 const form = document.getElementById("form");
 const pesquisa = document.getElementById("pesquisa");
 const inclui_README = document.getElementById("inclui_README");
+const butt_prox = document.getElementById("prox");
+const butt_tras = document.getElementById("tras");
 
 var pag_atual = 1;
+var pesquisa_atual;
 
 async function getRepo(termo_pesquisa) {
     main.innerHTML = ""; // limpa o corpo para inserção de uma nova pesquisa
@@ -18,14 +21,6 @@ async function getRepo(termo_pesquisa) {
     const respJSON = await resp.json();
 
     respJSON.items.forEach(criarCard);
-}
-
-function prox_pag(){
-    pag_atual++;
-}
-
-function volt_pag(){
-    pag_atual--;
 }
 
 function criarCard(repo) {
@@ -60,10 +55,23 @@ function criarCard(repo) {
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     pag_atual = 1;
-    const termo_pesquisa = encodeURIComponent(pesquisa.value);
-    if(termo_pesquisa){
-        getRepo(termo_pesquisa);
+    pesquisa_atual = encodeURIComponent(pesquisa.value);
+    if(pesquisa_atual){
+        getRepo(pesquisa_atual);
         pesquisa.value = "";
     }
-    Array.from(document.querySelectorAll('.escondido')).forEach((el) => el.classList.remove('escondido'));
+    Array.from(document.querySelectorAll('form .escondido')).forEach((el) => el.classList.remove('escondido'));
+    butt_prox.classList.remove('escondido');
+})
+
+butt_prox.addEventListener("click", () => {
+    pag_atual++;
+    getRepo(pesquisa_atual);
+    butt_tras.classList.remove('escondido');
+})
+
+butt_tras.addEventListener("click", () => {
+    pag_atual--;
+    getRepo(pesquisa_atual);
+    if (pag_atual == 1) butt_tras.classList.add('escondido');
 })
