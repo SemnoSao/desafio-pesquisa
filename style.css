@@ -23,20 +23,30 @@ input {
     font-family: inherit;
     font-size: 1rem;
     padding: 1rem;
-    margin-bottom: 2rem;
+    margin: 1rem;
 }
 
 input::placeholder {
     color: #003B00;
 }
 
+h2 a{
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
 main {
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 .card{
     border-radius: 20px;
     color:  #008F11;
     font-family: inherit;
-    max-width: 800px;
+    padding: 2rem;
+    width: 400px;
 }
